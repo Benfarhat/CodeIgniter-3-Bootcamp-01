@@ -2,6 +2,22 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 <div class="container">
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, est. Voluptas tenetur hic error at quisquam voluptate explicabo eveniet corrupti? Odit, at numquam illum obcaecati doloribus perferendis voluptate recusandae. Atque praesentium nemo numquam earum repellat fuga quisquam dolorum, deserunt beatae accusantium nobis amet quam et cum consequatur ullam adipisci ipsum error recusandae veritatis omnis fugiat itaque quasi! Nesciunt odio beatae numquam tempora et eum esse dicta velit! Quam optio inventore deleniti aspernatur! Dignissimos error ullam debitis illo dolorum illum modi eveniet, commodi at! Unde repellendus, libero beatae tempore harum porro at vero voluptas excepturi sapiente illo atque earum sit dignissimos error fuga accusantium asperiores ratione natus. Consequatur, animi voluptatum? Facilis, minus nostrum. Vero deserunt distinctio dolore! Eaque illo placeat eum in consequatur laudantium natus iste expedita numquam. Quia ducimus aspernatur a in quisquam vel enim dicta necessitatibus ut, id repellendus voluptatem veritatis? Aperiam alias tempora aliquid eaque perferendis? Eligendi, saepe. Quasi nisi earum, quo laborum ab quis repellendus aliquid doloremque adipisci itaque perspiciatis eligendi rem est exercitationem, fugit minima sit quam nulla corporis tempore hic nesciunt iusto natus. Aut neque sit perspiciatis nam! Iste quibusdam accusantium deleniti. Vero consequatur et, magni harum neque voluptates, deserunt dignissimos sint iste in nam.
-</p>
+	<div class="jumbotron p-3 p-md-10 text-white rounded bg-primary">
+        <div class="col-md-12 px-0">
+          <h1 class="display-4 font-italic">CodeIgniter 3 Bootcamp</h1>
+          <div class="lead my-3">Mise en place d'un Blog avec toutes les fonctionalités basiques telles que:
+			  <ul>
+				  <li>Utilisation des Helpers et des librairies, </li>
+				  <li>Accès aux bases de données, </li>
+				  <li>les formulaires et leur validation, </li>
+				  <li>la pagination customisée, </li>
+				  <li>les fonctions findBy des models, </li>
+				  <li>la sécurité (CSRF), </li>
+				  <li>l'authentification,</li>
+				  <li>etc...</li>
+</ul>		
+			</div>
+          <p class="lead mb-0"><a href="#" class="text-white font-weight-bold">Animé par Benfarhat Elyes</a></p>
+        </div>
+      </div>
 </div>
