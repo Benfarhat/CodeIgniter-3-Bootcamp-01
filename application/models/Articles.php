@@ -46,9 +46,12 @@ class Articles extends CI_Model {
 			return $this->db->get()->result();
         }
         if (strpos($method, 'findOneBy') === 0) {
-			$this->db->limit(1, 1);
 			$this->db->where(strtolower(substr($method, 9)), $arguments[0]);
-			return $this->db->get()->result();
+			return $this->db->get()->first_row()->result();
+        }
+        if (strpos($method, 'findLastBy') === 0) {
+			$this->db->where(strtolower(substr($method, 10)), $arguments[0]);
+			return $this->db->get()->last_row()->result();
         }
         if (strpos($method, 'countBy') === 0) {
 			$this->db->where(strtolower(substr($method, 7)), $arguments[0]);
