@@ -1,4 +1,6 @@
-<?php $article = (object) $article; ?>
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+?><?php $article = (object) $article; ?>
 <div class="container">
 	<div class="card">
 	<div class="card-body">

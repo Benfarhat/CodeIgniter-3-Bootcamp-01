@@ -1,14 +1,6 @@
 <?php
-/*
-
-            [id] => 78
-            [name] => aliquam iaculis, lacus pede sagittis
-            [slug] => CF51801D-12C3-94F0-BF47-1504D1DF4F78
-            [content] => nulla. Donec non justo. Proin non massa non ante bibendum ullamcorper. Duis cursus, diam at pretium aliquet, metus urna convallis erat, eget tincidunt dui augue eu tellus. Phasellus elit pede,
-			[created_at] => 2018-08-24 19:50:16
-			*/
-			?>
-			
+defined('BASEPATH') OR exit('No direct script access allowed');
+?>		
 <div class="container">	
 <?= $pagination ?>	
 <table class="table">
