@@ -16,7 +16,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<a class="nav-link" href="#">Articles</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">About</a>
+					<?= anchor('contact', 'Contact', 'class="nav-link"') ?>
 				</li>
 			</ul>
 			<form class="form-inline my-2 my-lg-0">
