@@ -28,7 +28,7 @@ if(@$_SERVER['HTTPS']):
 else :
 	$url = "http://" . $_SERVER['HTTP_HOST'];
 endif;
-$config['base_url'] = $url . DIRECTORY_SEPARATOR;
+$config['base_url'] = $url;
  
 /*
 |--------------------------------------------------------------------------

@@ -57,7 +57,7 @@ class Blog extends CI_Controller {
 	 * @param array $data data sent to rendering
 	 * @return void
 	 */
-	private function view($view, $data = [])
+	private function render($view, $data = [])
 	{
 		$data = empty($data)?$this->data:$data;
 		$this->load->view($view, $data);
@@ -72,15 +72,92 @@ class Blog extends CI_Controller {
 	 */
 	public function index()
 	{
-		$query = $this->db->query('SELECT* FROM article');
-
 		$data["title"] = "Accueil";
 		$this->setData($data);
 
-		$this->view('elements/header');
-		$this->view('elements/menu');
-		$this->view('blog/index');
-		$this->view('elements/footer');
+		$this->render('elements/header');
+		$this->render('elements/menu');
+		$this->render('blog/index');
+		$this->render('elements/footer');
+	}
+
+	/**
+	 * Articles function
+	 * 
+	 * Listing aticles with pagination(@todo)
+	 *
+	 * @return void
+	 */
+	public function articles($start = 1)
+	{
+		$this->load->model('articles');
+		$results = $this->articles->findAll($start);
+		$data["title"] = "Articles index";
+		$data["articles"] = $results['result'];
+		$data["start"] = $results['start'];
+		$data["limit"] = $results['limit'];
+		$data["count"] = $results['count'];
+		
+		$this->load->library('pagination');
+		$pagination['base_url'] = site_url('articles') . DIRECTORY_SEPARATOR . 'page';
+		$pagination['total_rows'] = $data["count"];
+		$pagination['per_page'] = $data["limit"];
+		$pagination['page_query_string'] = FALSE;
+		$pagination['attributes'] = array('class' => 'page-link');
+
+		$pagination['full_tag_open'] = '<nav aria-label="Page navigation example"><ul class="pagination">';
+		$pagination['full_tag_close'] = '</ul></nav>';
+
+		$pagination['next_tag_open'] = '<li class="page-item">';
+		$pagination['next_tag_close'] = '</li>';
+		
+		$pagination['prev_link'] = '&lt;';
+		
+		$pagination['prev_tag_open'] = '<li class="page-item">';
+		$pagination['prev_tag_close'] = '</li>';
+		
+		$pagination['cur_tag_open'] = '<li class="page-item active"><a class="page-link" href="#">';
+		$pagination['cur_tag_close'] = '</a></li>';
+		
+		$pagination['num_tag_open'] = '<li class="page-item">';
+		$pagination['num_tag_close'] = '</li>';
+		
+		$this->pagination->initialize($pagination);
+
+
+		$data["pagination"] = $this->pagination->create_links();
+
+		$this->setData($data);
+		$this->render('elements/header');
+		$this->render('elements/menu');
+		$this->render('blog/articles');
+		$this->render('elements/footer');
+	}
+
+	/**
+	 * Article function
+	 * 
+	 * Display an article with this slug
+	 *
+	 * @param string $slug
+	 * @return void
+	 */
+	public function article($slug)
+	{
+		$this->load->model('articles');
+		$result = $this->articles->findBySlug($slug);
+		if(count($result) > 0){
+		$data["article"] = (array) current($result);
+		$data["title"] = $data["article"]['name'];
+		
+		$this->setData($data);
+		$this->render('elements/header');
+		$this->render('elements/menu');
+		$this->render('blog/article');
+		$this->render('elements/footer');
+		} else {
+
+		}
 	}
 
 	/**
@@ -98,8 +175,8 @@ class Blog extends CI_Controller {
 		
 		// OR
 		//$this->form_validation->set_rules('email', 'Email', 'required', array('required' => 'You must provide an %s.'));
-		$this->view('elements/header');
-		$this->view('elements/menu');
+		$this->render('elements/header');
+		$this->render('elements/menu');
 
         if($this->form_validation->run()) {
 			if($this->getSendEmail()):
@@ -115,11 +192,11 @@ class Blog extends CI_Controller {
 				$this->email->attach(base_url("assets/images/ci.png"), 'attachment', 'Logo.png');
 				$this->email->send();
 			endif;
-            $this->view('blog/contact_ok');
+            $this->render('blog/contact_ok');
         } else {
-            $this->view('blog/contact');
+            $this->render('blog/contact');
         }
-		$this->view('elements/footer');
+		$this->render('elements/footer');
 	}
 
 	/**
