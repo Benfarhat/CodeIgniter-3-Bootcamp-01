@@ -44,6 +44,7 @@ class Blog extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+		$this->load->library('session');
 		$this->data["title"] = "Blog";
 	}
 
@@ -71,9 +72,11 @@ class Blog extends CI_Controller {
 	 */
 	public function index()
 	{
-		// $this->load->helper('url'); <-- already done in config/autoload.php
+		$query = $this->db->query('SELECT* FROM article');
+
 		$data["title"] = "Accueil";
 		$this->setData($data);
+
 		$this->view('elements/header');
 		$this->view('elements/menu');
 		$this->view('blog/index');
