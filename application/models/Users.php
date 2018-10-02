@@ -11,15 +11,6 @@ class Users extends CI_Model {
         $this->load_from_session();
     }
 
-    public function __get( $key) {
-        $method_name = 'get_property_' . $key;
-        if (method_exists($this, $method_name)) {
-            return $this->$method_name();
-        } else {
-            return parent::__get( $key);
-        }
-    }
-
     protected function clear_data() {
         $this->_id = NULL;
         $this->_username = NULL;
@@ -27,6 +18,17 @@ class Users extends CI_Model {
 
     protected function clear_session() {
         $this->session->auth_user = NULL;
+    }
+
+    /* Magic / Dynamic methods */
+
+    public function __get( $key) {
+        $method_name = 'get_property_' . $key;
+        if (method_exists($this, $method_name)) {
+            return $this->$method_name();
+        } else {
+            return parent::__get( $key);
+        }
     }
 
     protected function get_property_id() {
