@@ -17,6 +17,8 @@ class Blog extends CI_Controller {
 	 */
 	private $sendEmail = FALSE;
 
+	private $test = TRUE;
+
 	/**
 	 * Config variable Form validation rules
 	 *
@@ -218,22 +220,41 @@ class Blog extends CI_Controller {
 		$this->render('elements/footer');
 	}
 
+	/**
+	 * Connexion function
+	 * 
+	 * Valid and connect an user
+	 *
+	 * @return void
+	 */
 	public function connexion() {
-        $this->load->helper("form");
-        $this->load->library('form_validation');
-
-        $data["title"] = "Identification";
-
-        if($this->form_validation->run()) {
-            $username = $this->input->post('username');
-            $password = $this->input->post('password');
-            $this->auth_user->login( $username, $password);
-            redirect('index');
-        } else {
-            $this->load->view('common/header', $data);
-            $this->load->view('site/connexion', $data);
-            $this->load->view('common/footer', $data);
-        }
+		
+		if( $this->input->method() == "post" ) :
+			
+			$this->load->library('form_validation');
+			$this->form_validation->set_rules($this->getValidationConnexion());
+			if($this->form_validation->run()) {
+				
+				$username = $this->input->post('username');
+				$password = $this->input->post('password');
+				$this->user->login( $username, $password);
+			} else {
+				// Datas not valid
+			}
+		endif;
+		redirect('index');
+	}
+	
+	/**
+	 * Deconnexion function
+	 * 
+	 * Simple disconnect method thru model
+	 *
+	 * @return void
+	 */
+	function deconnexion() {
+        $this->user->logout();
+        redirect('index');
     }
 
 
@@ -272,6 +293,30 @@ class Blog extends CI_Controller {
 	public function setValidation(array $validation)
 	{
 		$this->validation = $validation;
+
+		return $this;
+	}
+
+	/**
+	 * Get config variable Connexion Form validation rules
+	 *
+	 * @return  array
+	 */ 
+	public function getValidationConnexion()
+	{
+		return $this->validationConnexion;
+	}
+
+	/**
+	 * Set config variable Form validation rules
+	 *
+	 * @param  array  $validationConnexion  Config variable Coneexion's Form validation rules
+	 *
+	 * @return  self
+	 */ 
+	public function setValidationConnexion(array $validationConnexion)
+	{
+		$this->validationConnexion = $validationConnexion;
 
 		return $this;
 	}

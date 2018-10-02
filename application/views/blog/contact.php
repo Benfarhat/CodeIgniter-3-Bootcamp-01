@@ -3,7 +3,7 @@
     <?= heading( $title); ?>
   </div>
 
-  <div class="panel panel-danger">
+  <div class="invalid-feedback">
   	<?php echo validation_errors(); ?>
   </div>
   <hr>

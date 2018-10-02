@@ -57,6 +57,8 @@ $route['articles'] = 'blog/articles';
 $route['articles/page/(:num)'] = 'blog/articles/$1';
 $route['article/(:any)'] = 'blog/article/$1';
 $route['contact'] = 'blog/contact';
+$route['connexion'] = 'blog/connexion';
+$route['deconnexion'] = 'blog/deconnexion';
 $route ['(:any)'] = 'blog/view/$1';
 
 

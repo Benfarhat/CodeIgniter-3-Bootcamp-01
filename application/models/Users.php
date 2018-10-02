@@ -55,9 +55,9 @@ class Users extends CI_Model {
     protected function load_user( $username) {
         return $this->db
                     ->select('id, username, password')
-                    ->from('login')
+                    ->from('users')
                     ->where('username', $username)
-                    ->where('status', 'A')
+                    ->where('status', 1)
                     ->get()
                     ->first_row();
     }
