@@ -20,8 +20,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				</li>
 			</ul>
 			<ul class="navbar-nav ml-auto">
-				<li class="nav-item">
-					<?= anchor('connexion', '<i class="fa fa-user"></i> Connexion', 'class="nav-link"') ?>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<i class="fa fa-user"></i> Connexion
+				</a>
+				<div class="dropdown-menu animated flipInY bg-white" aria-labelledby="navbarDropdown">
+					<?= form_open('connexion', ['class' => 'form-horizontal']); ?>
+					<div class="form-group">
+					<div class="col-md-12 <?= empty(form_error('username')) ? "" : "has-error" ?>">
+					<?= form_input(['name' => "username", 'id' => "username", 'class' => 'form-control form-control-sm', 'placeholder' => 'Username'], set_value('username')) ?>
+					<span class="help-block"><?= form_error('username'); ?></span>
+					</div>
+					</div>
+					<div class="form-group">
+					<div class="col-md-12 <?= empty(form_error('password')) ? "" : "has-error" ?>">
+					<?= form_password(['name' => "password", 'id' => "password", 'class' => 'form-control form-control-sm', 'placeholder' => 'Password'], set_value('password')) ?>
+					<span class="help-block"><?= form_error('password'); ?></span>
+					</div>
+					</div>
+					<div class="form-group">
+					<div class="col-md-offset-2 col-md-12">
+					<?= form_submit("send", "Envoyer", ['class' => "btn btn-primary btn-block btn-sm"]); ?>
+					</div>
+					</div>
+					<?= form_close() ?>
+				</div>
 				</li>
 				<li class="nav-item">
 				
