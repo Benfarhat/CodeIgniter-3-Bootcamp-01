@@ -8,16 +8,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <div class="lead my-3">Mise en place d'un Blog avec toutes les fonctionalités basiques telles que:
 			  <ul>
 				  <li>Utilisation des Helpers et des librairies, </li>
-				  <li>Accès aux bases de données, </li>
-				  <li>les formulaires et leur validation, </li>
-				  <li>la pagination customisée, </li>
-				  <li>les fonctions findBy des models, </li>
-				  <li>la sécurité (CSRF), </li>
-				  <li>l'authentification,</li>
-				  <li>etc...</li>
-</ul>		
+				  <li>Model et accès aux bases de données, </li>
+				  <li>Formulaires et validation, </li>
+				  <li>Pagination customisée, </li>
+				  <li>Fonctions dynamique (findBy, findOneBy, etc..), </li>
+				  <li>Sécurité (CSRF), </li>
+				  <li>Authentification et Session,</li>
+				  <li>Etc...</li>
+			  </ul>		
 			</div>
-          <p class="lead mb-0"><a href="#" class="text-white font-weight-bold">Animé par Benfarhat Elyes</a></p>
+          <p class="lead mb-0 clearfix"><a href="#" class="text-white font-italic float-right">Animé par Benfarhat Elyes</a></p>
         </div>
       </div>
 </div>
