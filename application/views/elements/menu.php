@@ -19,10 +19,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<?= anchor('contact', 'Contact', 'class="nav-link"') ?>
 				</li>
 			</ul>
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item">
+					<?= anchor('connexion', '<i class="fa fa-user"></i> Connexion', 'class="nav-link"') ?>
+				</li>
+				<li class="nav-item">
+				
 			<form class="form-inline my-2 my-lg-0">
-				<input class="form-control mr-sm-2" placeholder="Search" type="text">
-				<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+				<input style="border:none;background-color:transparent;color:#fff;border-bottom:1px solid rgba(255,255,255,.3);margin-right:4px;padding-top:8px;" placeholder="Search" type="text">
+				<button class="btn btn-secondary btn-sm mey-2 mey-sm-0" type="submit">Search</button>
 			</form>
+    </li>
+			</ul>
+
 		</div>
 	</div>
 </nav>
