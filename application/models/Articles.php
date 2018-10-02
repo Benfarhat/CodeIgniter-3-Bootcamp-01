@@ -5,6 +5,11 @@ class Articles extends CI_Model {
 
 	protected $limit;
 	protected $sort = [];
+    protected $_id;
+    protected $_title;
+    protected $_slug;
+    protected $_content;
+    protected $_created_at;
 
     public function __construct() {
         parent::__construct();
@@ -12,14 +17,6 @@ class Articles extends CI_Model {
 		$this->sort = ['created_at' => 'DESC'];
     }
 
-    public function __get($key) {
-        $method_name = 'get_property_' . $key;
-        if (method_exists($this, $method_name)) {
-            return $this->$method_name();
-        } else {
-            return parent::__get($key);
-        }
-	}
 	
     public function findAll($start = 1) {
 		$count = $this->db->count_all("articles");
@@ -33,6 +30,9 @@ class Articles extends CI_Model {
 		return ['result' => $result, 'start' => $start, 'count' => $count, 'limit' => $this->limit];
 	}
 
+	public function setProperty($property, $value){
+		$this->$property = $value;
+	}
 	
     public function __call($method, $arguments)
     {

@@ -55,14 +55,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						<i class="fa fa-user"></i> <?= $this->user->username; ?>
 					</a>
-					<div class="dropdown-menu animated flipInX bg-white" aria-labelledby="navbarDropdown">
-						<?= anchor('deconnexion', 'Deconnexion', 'class="dropdown-item bg-dark"') ?>
+					<div class="dropdown-menu animated flipInX bg-light text-dark" aria-labelledby="navbarDropdown">
+						<?= anchor('add_article', 'Ajouter un article', 'class="dropdown-item bg-light text-dark"') ?>
+						
+						<div class="dropdown-divider"></div>
+						<?= anchor('list_user', 'Liste des utilisateurs', 'class="dropdown-item bg-light text-dark"') ?>
+						<?= anchor('add_user', 'Ajouter un utilisateur', 'class="dropdown-item bg-light text-dark"') ?>
+						<div class="dropdown-divider"></div>
+						<?= anchor('deconnexion', 'Deconnexion', 'class="dropdown-item bg-light text-dark"') ?>
 					</div>
 				</li>
 				<?php endif; ?>
+				<li class="nav-item my-1 mx-2" style="border-left:1px solid rgba(255,255,255,0.2);">
+				</li>
 				<li class="nav-item">
 					<form class="form-inline my-2 my-lg-0">
-						<input style="border:none;background-color:transparent;color:#fff;border-bottom:1px solid rgba(255,255,255,.3);margin-right:4px;padding-top:8px;" placeholder="Search" type="text">
+						<input style="border:none;background-color:transparent;color:#fff;border-bottom:1px solid rgba(255,255,255,.3);margin-right:4px;padding-top:8px;" placeholder="Search articles content ..." type="text">
 						<button class="btn btn-secondary btn-sm mey-2 mey-sm-0" type="submit">Search</button>
 					</form>
 				</li>
