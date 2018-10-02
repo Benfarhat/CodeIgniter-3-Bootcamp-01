@@ -41,6 +41,12 @@ class Articles extends CI_Model {
 		->from('articles')
 		->order_by($this->getSort());
 		
+		// Escape special characters in method and argument
+		
+		$db = get_instance()->db->conn_id;
+		$method = mysqli_real_escape_string($db, $method);
+		$arguments[0] = mysqli_real_escape_string($db, $arguments[0]);
+
         if (strpos($method, 'findBy') === 0) {
 			$this->db->where(strtolower(substr($method, 6)), $arguments[0]);
 			return $this->db->get()->result();

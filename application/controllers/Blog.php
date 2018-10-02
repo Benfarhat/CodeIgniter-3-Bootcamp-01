@@ -37,6 +37,25 @@ class Blog extends CI_Controller {
 				'rules' => 'trim|required|valid_email'
 		)
 	);
+
+	/**
+	 * Config variable  Connexion Form validation rules
+	 *
+	 * @var array
+	 */	
+	private $validationConnexion = array(
+		array(
+			'field' => 'username',
+			'label' => "Nom d'utilisateur",
+			'rules' => 'required'
+		), 
+		array(
+			'field' => 'password',
+			'label' => 'Mot de passe',
+			'rules' => 'required'
+		)
+	);
+
 	/**
 	 * __construct function
 	 * set $this->data
@@ -198,6 +217,25 @@ class Blog extends CI_Controller {
         }
 		$this->render('elements/footer');
 	}
+
+	public function connexion() {
+        $this->load->helper("form");
+        $this->load->library('form_validation');
+
+        $data["title"] = "Identification";
+
+        if($this->form_validation->run()) {
+            $username = $this->input->post('username');
+            $password = $this->input->post('password');
+            $this->auth_user->login( $username, $password);
+            redirect('index');
+        } else {
+            $this->load->view('common/header', $data);
+            $this->load->view('site/connexion', $data);
+            $this->load->view('common/footer', $data);
+        }
+    }
+
 
 	/**
 	 * Set data variable Default value sent to views
